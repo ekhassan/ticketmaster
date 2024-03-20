@@ -38,6 +38,8 @@
 
   </nav> --}}
 
+  <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
       <div class="container">
           <a class="navbar-brand" href="/">
@@ -48,18 +50,18 @@
               <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-semibold">
+                  <li class="nav-item p-1">
                       <a class="nav-link active" aria-current="page" href="/">Home</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item p-1">
                       <a class="nav-link" href="/newEvents">New Events</a>
                   </li>
-                  <li class="nav-item px-2">
-                      <a href="/accounts" class="nav-link btn btn-primary text-white px-3 rounded-pill ">Account</a>
+                  <li class="nav-item px-2 p-1">
+                      <a href="/accounts" class="nav-link btn btn-primary text-white px-3 rounded-pill fw-semibold">Account</a>
                   </li>
-                  <li class="nav-item">
-                      <a href="/addAccount" class="nav-link btn btn-danger text-white px-3 fw-semibold rounded-pill">Add
+                  <li class="nav-item p-1">
+                      <a href="/addAccount" class="nav-link btn btn-danger text-white px-3 fw-semibold rounded-pill fw-semibold">Add
                           Account</a>
                   </li>
               </ul>

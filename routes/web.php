@@ -32,4 +32,7 @@ Route::get('/accounts', [Accounts::class, 'showAllAccount']);
 
 Route::post('/submit-credentials', [PaymentGateway::class, 'payment']);
 
+Route::get('/events/{id}', [EventInfo::class,'buy'])->name('events.buy');
+Route::get('/newEvents/{id}', [EventInfo::class,'newBuy'])->name('newEvents.buy');
+
 

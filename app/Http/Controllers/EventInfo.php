@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use App\Models\NewEvent;
 use App\Models\Event;
@@ -55,18 +56,18 @@ class EventInfo extends Controller
             echo "Failed to fetch new events.";
         }
     }
-// }
+    // }
 
-// public function getEvents()
+    // public function getEvents()
 //     {
 //         $response = Http::get('https://app.ticketmaster.com/discovery/v2/events.json', [
 //             'apikey' => 'eVm5wgNkQ7gcGbjf2QKNxlvMDGgASVAI',
 //             'size' => 1
 //         ]);
 
-//         $eventsData = json_decode($response->body(), true);
+    //         $eventsData = json_decode($response->body(), true);
 
-//         if ($response->successful()) {
+    //         if ($response->successful()) {
 //             echo "<pre>";
 //             print_r($eventsData);
 //             echo "</pre>";
@@ -74,5 +75,18 @@ class EventInfo extends Controller
 //             echo "Failed to fetch events. Error: " . $response->status();
 //         }
 //     }
+
+    public function buy($id)
+    {
+        $event = Event::findOrFail($id);
+        $accounts = Account::all();
+        return view('buy', compact('event', 'accounts'));
+    }
+    public function newBuy($id)
+    {
+        $newEvent = NewEvent::findOrFail($id);
+        $accounts = Account::all();
+        return view('newBuy', compact('newEvent', 'accounts'));
+    }
 }
 

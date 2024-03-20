@@ -33,6 +33,17 @@
             text-align: center;
             vertical-align: middle;
         }
+
+        .card {
+            border-radius: 1.5rem;
+        }
+
+        .card-body {
+            background-image: url('{{ asset('/images/account.png') }}');
+            background-size: cover;
+            background-position: center;
+            border-radius: 1.5rem;
+        }
     </style>
     <title>TicketMaster</title>
 </head>
@@ -46,7 +57,47 @@
                     <div class="panel panel-default">
                         <h4 class="h4 panel-heading py-3">All Accounts</h4>
 
-                        <div class="panel-body">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            @foreach ($accounts as $account)
+                                <div class="col">
+                                    <div class="card rounded-5">
+                                        <div class="card-body rounded-5">
+                                            <h5 class="card-title">{{ $account->name }}</h5>
+                                            <hr>
+                                            <p class="card-text">
+                                            <div class="d-flex flex-column align-items-start  justify-content-between">
+                                                <div class="row w-100 py-3">
+                                                    <div class="col-md-12">
+                                                        <div class="d-flex flex-column ">
+                                                            <p class="card-text fw-bold ">{{ $account->cardnumber }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row w-100">
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex flex-column ">
+                                                            <h6 class="card-title h6 m-0 p-0 text-black-50">CVC</h6>
+                                                            <p class="card-text fw-bold ">{{ $account->cvc }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="d-flex flex-column flex-nowrap">
+                                                            <h6 class="card-title h6 m-0 p-0 text-black-50">Expiration</h6>
+                                                            <p class="card-text fw-bold">
+                                                                {{ $account->exp_month }}/{{ $account->exp_year }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </p>
+                                            </div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        {{-- <div class="panel-body">
                             <table class="table table-hover ">
                                 <thead>
                                     <tr class="bg-dark text-white">
@@ -67,7 +118,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
