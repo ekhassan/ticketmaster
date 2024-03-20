@@ -88,5 +88,10 @@ class EventInfo extends Controller
         $accounts = Account::all();
         return view('newBuy', compact('newEvent', 'accounts'));
     }
+
+    public function checkout()
+    {
+        return  view('checkout');
+    }
 }
 

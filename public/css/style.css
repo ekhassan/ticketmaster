@@ -1,4 +1,7 @@
-.fw-semibold
-{
+html {
+    scroll-behavior: smooth;
+}
+
+.fw-semibold {
     font-weight: 600 !important;
 }

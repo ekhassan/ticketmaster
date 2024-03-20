@@ -150,10 +150,10 @@
                             <div class="card-footer">
                                 <div class="float-end">
                                     <div class="d-flex align-items-center justify-content-center flex-wrap">
-                                        <a href="/"
+                                        <a href="javascript:history.back()"
                                             class="btn btn-secondary px-5 fw-semibold rounded-pill m-1">Back</a>
-                                        <button type="submit"
-                                            class="btn btn-primary px-5 fw-semibold rounded-pill">Confrim</button>
+                                        <a href="/checkout"
+                                            class="btn btn-primary px-5 fw-semibold rounded-pill">Confrim</a>
                                     </div>
                                 </div>
                             </div>

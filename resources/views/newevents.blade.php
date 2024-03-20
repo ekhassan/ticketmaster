@@ -58,11 +58,11 @@
                     {{-- <a href="/stripe/{{$totalMinPrice}}" class="btn btn-success p-2 mx-2" style="border-radius: 5px; text-decoration:none; align-self:center;">Buy All Tickets</a> --}}
                     <div class="d-flex align-items-center justify-content-center">
                         <form class="d-flex">
-                            <input class="form-control me-2 rounded-pill " type="search" placeholder="Search"
+                            <input class="form-control me-2 border border-success rounded-pill fw-semibold" type="search" placeholder="Search"
                                 aria-label="Search">
-                            <button class="btn btn-outline-success rounded-pill " type="submit">Search</button>
+                            <button class="btn btn-outline-success rounded-pill fw-semibold" type="submit">Search</button>
                         </form>
-                        <button type="button" class="btn btn-danger mx-2 rounded-pill " data-toggle="modal"
+                        <button type="button" class="btn btn-danger mx-2 rounded-pill fw-semibold" data-toggle="modal"
                             data-target="#selectAccountModal">
                             Buy All Tickets
                         </button>
