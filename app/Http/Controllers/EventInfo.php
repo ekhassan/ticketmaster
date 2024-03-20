@@ -89,9 +89,17 @@ class EventInfo extends Controller
         return view('newBuy', compact('newEvent', 'accounts'));
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
-        return  view('checkout');
+
+        $accountId = $request->query('accountId');
+        $newEvents = NewEvent::all();
+
+        // $accounts = Account::find($accountId);
+        $accounts = Account::all();
+
+        // return dd($accounts);
+        return view('checkout', compact('accounts','newEvents'));
     }
 }
 

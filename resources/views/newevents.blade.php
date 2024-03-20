@@ -85,7 +85,8 @@
                                 <h4 class="modal-title" id="selectAccountModalLabel">Select Account</h4>
                             </div>
                             <div class="modal-body">
-                                <form id="selectAccountForm">
+                                <form id="selectAccountForm" method="GET">
+                                    @csrf
                                     <div class="form-group">
                                         <label for="accountSelect">Choose Account:</label>
                                         <select class="form-control rounded-pill " id="accountSelect">
@@ -99,8 +100,11 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary rounded-pill px-4"
                                     data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success rounded-pill px-4" id="applyButton"
-                                    data-toggle="modal" data-target="#eventTicketModal">Apply</button>
+                                {{-- <button type="button" class="btn btn-success rounded-pill px-4" id="applyButton"
+                                    data-toggle="modal" data-target="#eventTicketModal">Apply</button> --}}
+                                {{-- <a href="{{ route('checkout', ['accountId' => $account->id]) }}"
+                                    class="btn btn-success rounded-pill px-4" id="">Apply</a> --}}
+                                <button class="btn btn-success" type="submit" id="applyButton">Apply</button>
                             </div>
                         </div>
                     </div>
@@ -402,6 +406,11 @@
         $('#quantity').on('input', function() {
             this.value = this.value.replace(/[^0-9]/g, '');
         });
+    });
+
+    document.getElementById('applyButton').addEventListener('click', function() {
+        var selectedAccountId = document.getElementById('accountSelect').value;
+        window.location.href = "{{ route('checkout') }}?account_id=" + selectedAccountId;
     });
 
     document.addEventListener('DOMContentLoaded', function() {
