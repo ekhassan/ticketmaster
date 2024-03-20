@@ -14,6 +14,13 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
     <style>
+        body {
+            background-image: url('{{ asset('/images/account.png') }}');
+            background-size: contain;
+            /* background-position: center; */
+
+        }
+
         .table-wrapper {
             overflow-x: auto;
             overflow-y: auto;
@@ -58,9 +65,10 @@
                     {{-- <a href="/stripe/{{$totalMinPrice}}" class="btn btn-success p-2 mx-2" style="border-radius: 5px; text-decoration:none; align-self:center;">Buy All Tickets</a> --}}
                     <div class="d-flex align-items-center justify-content-center">
                         <form class="d-flex">
-                            <input class="form-control me-2 border border-success rounded-pill fw-semibold" type="search" placeholder="Search"
-                                aria-label="Search">
-                            <button class="btn btn-outline-success rounded-pill fw-semibold" type="submit">Search</button>
+                            <input class="form-control me-2 border border-success rounded-pill fw-semibold"
+                                type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success rounded-pill fw-semibold"
+                                type="submit">Search</button>
                         </form>
                         <button type="button" class="btn btn-danger mx-2 rounded-pill fw-semibold" data-toggle="modal"
                             data-target="#selectAccountModal">

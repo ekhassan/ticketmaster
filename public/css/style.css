@@ -1,7 +1,10 @@
 html {
     scroll-behavior: smooth;
 }
-
+/* body {
+    background-image: url("/TicketMaster-master/public/images");
+    background-position: cover;
+} */
 .fw-semibold {
     font-weight: 600 !important;
 }

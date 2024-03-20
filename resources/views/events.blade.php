@@ -212,6 +212,12 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <style>
+        body {
+            background-image: url('{{ asset('/images/account.png') }}');
+            background-size: contain;
+            /* background-position: contain; */
+        }
+
         .table-wrapper {
             overflow-x: auto;
             overflow-y: auto;
