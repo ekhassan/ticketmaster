@@ -14,6 +14,22 @@
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
     <style>
+        body {
+            background-color: hsla(262, 100%, 80%, 0.3);
+            background-image:
+                radial-gradient(at 71% 58%, hsla(69, 86%, 73%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 96% 88%, hsla(22, 99%, 68%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 56% 53%, hsla(292, 85%, 75%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 46% 46%, hsla(270, 89%, 70%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 90% 59%, hsla(6, 82%, 72%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 9% 22%, hsla(239, 68%, 62%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 42% 15%, hsla(103, 99%, 70%, 0.5) 0px, transparent 50%);
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        }
+
         .card-body {
 
             position: relative;
@@ -28,7 +44,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('{{ asset('/images/card-bg.jpg') }}');
             background-size: cover;
             background-position: center;
             opacity: 0.5;
@@ -40,7 +55,7 @@
 
 <body>
     <x-header />
-    <div class="container">
+    <div class="container-fluid px-5">
 
         <div class="d-flex align-items-center justify-content-center vh-100 ">
             <div class="row" style="margin-top: -50px">

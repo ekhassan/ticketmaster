@@ -1,10 +1,27 @@
 html {
     scroll-behavior: smooth;
 }
-/* body {
-    background-image: url("/TicketMaster-master/public/images");
-    background-position: cover;
-} */
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #212529;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(33, 37, 41, 0.7);
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent; /* Transparent background for the corner */
+}
+
 .fw-semibold {
     font-weight: 600 !important;
 }

@@ -15,10 +15,15 @@
     </script>
     <style>
         body {
-            background-image: url('{{ asset('/images/account.png') }}');
-            background-size: contain;
-            /* background-position: center; */
-
+            background-color: hsla(262, 100%, 80%, 0.3);
+            background-image:
+                radial-gradient(at 71% 58%, hsla(69, 86%, 73%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 96% 88%, hsla(22, 99%, 68%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 56% 53%, hsla(292, 85%, 75%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 46% 46%, hsla(270, 89%, 70%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 90% 59%, hsla(6, 82%, 72%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 9% 22%, hsla(239, 68%, 62%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 42% 15%, hsla(103, 99%, 70%, 0.5) 0px, transparent 50%);
         }
 
         .table-wrapper {
@@ -43,13 +48,18 @@
             text-align: start;
             vertical-align: middle;
         }
+
+        tr {
+            background: rgba(255, 255, 255, 0.2) !important; // Make sure this color has an opacity of less than 1
+            backdrop-filter: blur(8px) !important; // This be the blur
+        }
     </style>
     <title>TicketMaster</title>
 </head>
 
 <body>
     <x-header />
-    <div class="container">
+    <div class="container-fluid px-5">
         <div class="mt-1">
             <div class="d-flex flex-row my-2">
                 <div class="d-flex align-items-center justify-content-between my-3 w-100">
@@ -65,7 +75,8 @@
                     {{-- <a href="/stripe/{{$totalMinPrice}}" class="btn btn-success p-2 mx-2" style="border-radius: 5px; text-decoration:none; align-self:center;">Buy All Tickets</a> --}}
                     <div class="d-flex align-items-center justify-content-center">
                         <form class="d-flex">
-                            <input class="form-control me-2 border border-success rounded-pill fw-semibold"
+                            <input
+                                class="form-control me-2 border border-success rounded-pill fw-semibold bg-transparent "
                                 type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success rounded-pill fw-semibold"
                                 type="submit">Search</button>
@@ -85,184 +96,33 @@
                                 <h4 class="modal-title" id="selectAccountModalLabel">Select Account</h4>
                             </div>
                             <div class="modal-body">
-                                <form id="selectAccountForm" method="GET">
-                                    @csrf
+                                <form id="selectAccountForm">
                                     <div class="form-group">
-                                        <label for="accountSelect">Choose Account:</label>
-                                        <select class="form-control rounded-pill " id="accountSelect">
+                                        <label for="accountSelect" class="form-label fw-semibold">Choose
+                                            Account:</label>
+                                        <select class="form-control rounded-pill fw-semibold" id="accountSelect">
                                             @foreach ($accounts as $account)
-                                                <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                                <option value="{{ $account->id }}" class="fw-semibold">
+                                                    {{ $account->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary rounded-pill px-4"
+                                <button type="button" class="btn btn-secondary rounded-pill fw-semibold px-4"
                                     data-dismiss="modal">Close</button>
-                                {{-- <button type="button" class="btn btn-success rounded-pill px-4" id="applyButton"
-                                    data-toggle="modal" data-target="#eventTicketModal">Apply</button> --}}
-                                {{-- <a href="{{ route('checkout', ['accountId' => $account->id]) }}"
-                                    class="btn btn-success rounded-pill px-4" id="">Apply</a> --}}
-                                <button class="btn btn-success" type="submit" id="applyButton">Apply</button>
+                                <button class="btn btn-success rounded-pill fw-semibold px-4" type="submit"
+                                    id="applyButton">Apply</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- Event Tickets Modal --}}
-                <div class="modal fade" id="eventTicketModal" tabindex="-1" role="dialog"
-                    aria-labelledby="eventTicketModal">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header bg-dark text-white">
-                                <h4 class="modal-title" id="selectAccountModalLabel">Select Account</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form id="eventTicketModal">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="table-wrapper">
-                                                <table class="table table-hover">
-                                                    <thead class="table-dark">
-                                                        <tr>
-                                                            <th>Event Name</th>
-                                                            <th>Avaiable Ticket</th>
-                                                            <th>Ticket Quantity</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Cleveland Cavaliers vs. Phoenix Suns</td>
-                                                            <td>05</td>
-                                                            <td>
-                                                                <div
-                                                                    class="d-flex align-items-center  justify-content-center">
-                                                                    <span
-                                                                        class="btn btn-outline-dark rounded-pill px-3 py-1 mx-2 fw-bold btn-minus">
-                                                                        - </span>
-                                                                    <input
-                                                                        class="form-control text-center rounded-pill  w-25"
-                                                                        type="text" name="quantity" id="quantity"
-                                                                        value="0">
-                                                                    <span
-                                                                        class="btn btn-outline-dark rounded-pill px-3 py-1 mx-2 fw-bold btn-plus">
-                                                                        + </span>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Cleveland Cavaliers vs. Phoenix Suns</td>
-                                                            <td>05</td>
-                                                            <td>
-                                                                <div
-                                                                    class="d-flex align-items-center  justify-content-center">
-                                                                    <span
-                                                                        class="btn btn-outline-dark rounded-pill px-3 py-1 mx-2 fw-bold btn-minuss">
-                                                                        - </span>
-                                                                    <input
-                                                                        class="form-control text-center rounded-pill  w-25"
-                                                                        type="text" name="quantity" id="quantity"
-                                                                        value="0">
-                                                                    <span
-                                                                        class="btn btn-outline-dark rounded-pill px-3 py-1 mx-2 fw-bold btn-pluss">
-                                                                        + </span>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary rounded-pill px-4"
-                                    data-dismiss="modal">Back</button>
-                                <button type="button" class="btn btn-success rounded-pill px-4" id="applyButton"
-                                    data-toggle="modal" data-target="#reciept">Next</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- Receipt Modal --}}
-                <div class="modal fade" id="reciept" tabindex="-1" role="dialog" aria-labelledby="reciept">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header bg-dark text-white">
-                                <h4 class="modal-title" id="reciept">Receipt</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form id="reciept">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="d-flex justify-content-between">
-                                                <h6 class="h6">Total Number of Ticket: </h6>
-                                                <p class="p">8</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="d-flex justify-content-between">
-                                                <h6 class="h6">Total Price:</h6>
-                                                <p class="p">Rs. 40,000</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="d-flex justify-content-between">
-                                                <h6 class="h6">Selected Bank:</h6>
-                                                <p class="p selected-account"></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="table-wrapper">
-                                                <table class="table table-hover">
-                                                    <thead class="table-dark">
-                                                        <tr>
-                                                            <th>Event Name</th>
-                                                            <th>No of Tickets</th>
-                                                            <th>Event Price</th>
-                                                            <th>Currency</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Cleveland Cavaliers vs. Phoenix Suns</td>
-                                                            <td>04</td>
-                                                            <td>20</td>
-                                                            <td>USD</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Cleveland Cavaliers vs. Phoenix Suns</td>
-                                                            <td>04</td>
-                                                            <td>20</td>
-                                                            <td>USD</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary rounded-pill px-4"
-                                    data-dismiss="modal">Back</button>
-                                <button type="button" class="btn btn-success rounded-pill px-4" id="applyButton"
-                                    data-dismiss="modal">Buy</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
-            <div class="table-responsive text-nowrap">
-                <table class="table table-bordered table-hover">
+            <div class="table-responsive text-nowrap bg-transparent " style="max-height: 70vh">
+                <table class="table table-bordered table-hover" >
                     <thead>
                         <tr class="bg-dark text-white">
                             <th>Id</th>
@@ -287,13 +147,13 @@
                     </thead>
                     <tbody>
                         @foreach ($events as $event)
-                            <tr>
+                            <tr style="backdrop-filter: blur(50px) saturate(0.6) !important; ">
                                 <td>{{ $event->ticketId }}</td>
                                 <td>{{ $event->name }}</td>
                                 <td>{{ $event->locale }}</td>
                                 <td>{{ $event->type }}</td>
-                                <td><img src="{{ $event->image }}" class=" rounded-3"
-                                        style="width:150px; height:80px;" alt="Event image">
+                                <td><img src="{{ $event->image }}" class=" rounded-3" style="width:150px; height:80px;"
+                                        alt="Event image">
                                 </td>
                                 <td>
                                     @if ($event->public_sales_end_time && $event->public_sales_start_time)
@@ -350,17 +210,17 @@
                                     @endif
                                 </td>
                                 <td style="width: 150px">
-                                    <span class="fw-bold">ID: </span>{{ $event->venue_id }} <br>
+                                    {{-- <span class="fw-bold">ID: </span>{{ $event->venue_id }} <br> --}}
                                     <span class="fw-bold">Venue: </span>{{ $event->venue }} <br>
-                                    <span class="fw-bold">Locale: </span>{{ $event->venue_locale }} <br>
-                                    <span class="fw-bold">Time Zone: </span>{{ $event->venue_time_zone }} <br>
+                                    {{-- <span class="fw-bold">Locale: </span>{{ $event->venue_locale }} <br> --}}
+                                    {{-- <span class="fw-bold">Time Zone: </span>{{ $event->venue_time_zone }} <br> --}}
                                     <span class="fw-bold">Country: </span>{{ $event->venue_country }} <br>
                                     <span class="fw-bold">City: </span>{{ $event->venue_city }} <br>
                                     <span class="fw-bold">Postal Code: </span>{{ $event->venue_postal_code }}
                                 </td>
                                 <td>
                                     <a href="{{ route('newEvents.buy', ['id' => $event->id]) }}"
-                                        class="btn btn-success rounded-pill px-5"
+                                        class="btn btn-primary rounded-pill fw-semibold px-5"
                                         style="border-radius: 5px; text-decoration:none">Buy</a>
                                 </td>
                             </tr>
@@ -380,7 +240,6 @@
         $('#applyButton').on('click', function() {
             // Get the selected account name from the select dropdown
             var selectedAccountName = $('#accountSelect option:selected').text();
-
             // Set the selected account name in the receipt modal
             $('#reciept').find('.selected-account').text(selectedAccountName);
         });

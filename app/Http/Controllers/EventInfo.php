@@ -94,12 +94,13 @@ class EventInfo extends Controller
 
         $accountId = $request->query('accountId');
         $newEvents = NewEvent::all();
+        $newEventsCount = NewEvent::count();
 
         // $accounts = Account::find($accountId);
         $accounts = Account::all();
 
         // return dd($accounts);
-        return view('checkout', compact('accounts','newEvents'));
+        return view('checkout', compact('accounts', 'newEvents', 'newEventsCount'));
     }
 }
 

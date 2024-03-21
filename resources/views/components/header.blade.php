@@ -41,7 +41,7 @@
   <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-      <div class="container">
+      <div class="container-fluid px-5">
           <a class="navbar-brand" href="/">
               <h3 class="h3 fw-bolder">TicketMaster</h3>
           </a>

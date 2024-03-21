@@ -16,7 +16,7 @@
 
 <body>
     <x-header />
-    <div class="container">
+    <div class="container-fluid px-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex align-items-center justify-content-center vh-100">
@@ -115,11 +115,16 @@
                                                 </div>
                                                 <div class="start-date d-flex align-items-center  fw-bold">
                                                     <span class="p-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-calendar2-event" viewBox="0 0 16 16">
-                                                            <path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
-                                                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"/>
-                                                            <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z"/>
-                                                          </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="28"
+                                                            height="28" fill="currentColor"
+                                                            class="bi bi-calendar2-event" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z" />
+                                                            <path
+                                                                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
+                                                            <path
+                                                                d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z" />
+                                                        </svg>
                                                     </span>
                                                     {{ date('F d, Y', strtotime($event->start_date)) }}
                                                 </div>
@@ -135,7 +140,8 @@
                                                 Account:</label>
                                             <select class="form-control rounded-pill fw-semibold" id="accountSelect">
                                                 @foreach ($accounts as $account)
-                                                    <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                                    <option value="{{ $account->id }}" class="fw-semibold">
+                                                        {{ $account->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -147,8 +153,8 @@
                                     <div class="d-flex align-items-center justify-content-center flex-wrap">
                                         <a href="javascript:history.back()"
                                             class="btn btn-secondary fw-semibold px-5 rounded-pill m-1">Back</a>
-                                        <a href="/checkout"
-                                            class="btn btn-primary fw-semibold px-5 rounded-pill">Confirm</a>
+                                        <button type="submit"
+                                            class="btn btn-primary fw-semibold px-5 rounded-pill">Confirm</button>
                                     </div>
                                 </div>
                             </div>
@@ -158,6 +164,8 @@
             </div>
         </div>
     </div>
+
+    
 
 </body>
 

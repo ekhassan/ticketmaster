@@ -213,10 +213,17 @@
     </script>
     <style>
         body {
-            background-image: url('{{ asset('/images/account.png') }}');
-            background-size: contain;
-            /* background-position: contain; */
+            background-color: hsla(262, 100%, 80%, 0.3);
+            background-image:
+                radial-gradient(at 71% 58%, hsla(69, 86%, 73%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 96% 88%, hsla(22, 99%, 68%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 56% 53%, hsla(292, 85%, 75%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 46% 46%, hsla(270, 89%, 70%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 90% 59%, hsla(6, 82%, 72%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 9% 22%, hsla(239, 68%, 62%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 42% 15%, hsla(103, 99%, 70%, 0.5) 0px, transparent 50%);
         }
+
 
         .table-wrapper {
             overflow-x: auto;
@@ -240,128 +247,130 @@
             text-align: start;
             vertical-align: middle;
         }
+
+        tr {
+            background: rgba(255, 255, 255, 0.2) !important;
+            backdrop-filter: blur(50px) saturate(0.6) !important;
+        }
     </style>
     <title>TicketMaster</title>
 </head>
 
 <body>
     <x-header />
-    <div class="container">
-        <div class="vh-100">
-            <div class="mt-1">
-                <h4 class="h4 my-3">All Events</h4>
-                <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr class="bg-dark text-white">
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Locale</th>
-                                <th>Type</th>
-                                <th>Image</th>
-                                <th>Public Sale</th>
-                                <th>Partner PreSale</th>
-                                <th>Group PreSale</th>
-                                <th>Start Date</th>
-                                <th>TimeZone</th>
-                                <th>Status</th>
-                                <th>Segment</th>
-                                <th>Genre</th>
-                                <th>Sub Genre</th>
-                                <th>Currency</th>
-                                <th>Price</th>
-                                <th>Venue</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($events as $event)
-                                <tr>
-                                    <td>{{ $event->ticketId }}</td>
-                                    <td>{{ $event->name }}</td>
-                                    <td>{{ $event->locale }}</td>
-                                    <td>{{ $event->type }}</td>
-                                    <td><img src="{{ $event->image }}" class=" rounded-3"
-                                            style="width:150px; height:80px;">
-                                    </td>
-                                    <td>
-                                        @if ($event->public_sales_end_time && $event->public_sales_start_time)
-                                            <span class="fw-bold">Start: </span> {{ $event->public_sales_start_time }}
-                                            <br>
-                                            <span class="fw-bold">End: </span> {{ $event->public_sales_end_time }}
-                                        @else
-                                            N.A
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($event->partner_presale_start_time && $event->partner_presale_end_time)
-                                            <span class="fw-bold">Start:
-                                            </span> {{ $event->partner_presale_start_time }}<br>
-                                            <span class="fw-bold">End: </span> {{ $event->partner_presale_end_time }}
-                                        @else
-                                            N.A
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($event->group_presale_start_time && $event->group_presale_end_time)
-                                            <span class="fw-bold">Start: </span> {{ $event->group_presale_start_time }}
-                                            <br>
-                                            <span class="fw-bold">End: </span> {{ $event->group_presale_end_time }}
-                                        @else
-                                            N.A
-                                        @endif
-                                    </td>
-                                    <td>{{ $event->start_date }}</td>
-                                    <td>{{ $event->time_zone }}</td>
-                                    <td class="text-danger fw-bold">
-                                        <h5 class="h5">{{ $event->status }}</h5>
-                                    </td>
-                                    <td>
-                                        <span class="fw-bold">ID: </span>{{ $event->segment_id }}
+    <div class="container-fluid px-5">
+        <div class="mt-1">
+            <h4 class="h4 my-3">All Events</h4>
+            <div class="table-responsive text-nowrap" style="max-height: 70vh">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="bg-dark text-white">
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Locale</th>
+                            <th>Type</th>
+                            <th>Image</th>
+                            <th>Public Sale</th>
+                            <th>Partner PreSale</th>
+                            <th>Group PreSale</th>
+                            <th>Start Date</th>
+                            <th>TimeZone</th>
+                            <th>Status</th>
+                            <th>Segment</th>
+                            <th>Genre</th>
+                            <th>Sub Genre</th>
+                            <th>Currency</th>
+                            <th>Price</th>
+                            <th>Venue</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($events as $event)
+                            <tr style="backdrop-filter: blur(50px) saturate(0.6) !important; ">
+                                <td>{{ $event->ticketId }}</td>
+                                <td>{{ $event->name }}</td>
+                                <td>{{ $event->locale }}</td>
+                                <td>{{ $event->type }}</td>
+                                <td><img src="{{ $event->image }}" class=" rounded-3" style="width:150px; height:80px;">
+                                </td>
+                                <td>
+                                    @if ($event->public_sales_end_time && $event->public_sales_start_time)
+                                        <span class="fw-bold">Start: </span> {{ $event->public_sales_start_time }}
                                         <br>
-                                        <span class="fw-bold">Name: </span>{{ $event->segment_name }}
-                                    </td>
-                                    <td>
-                                        <span class="fw-bold">ID: </span>{{ $event->genre_id }} <br>
-                                        <span class="fw-bold">Name: </span>{{ $event->genre_name }}
-                                    </td>
-                                    <td>
-                                        <span class="fw-bold">ID: </span>{{ $event->subgenre_id }} <br>
-                                        <span class="fw-bold">Name: </span>{{ $event->subgenre_name }}
-                                    </td>
-                                    <td>
-                                        {{ $event->currency }}
-                                    </td>
-                                    <td>
-                                        @if ($event->min_price && $event->max_price)
-                                            <span class="fw-bold">Min: </span>{{ $event->min_price }} <br>
-                                            <span class="fw-bold">Max: </span>{{ $event->max_price }}
-                                        @else
-                                            NA
-                                        @endif
-                                    </td>
-                                    <td style="width: 150px">
-                                        <span class="fw-bold">ID: </span>{{ $event->venue_id }} <br>
-                                        <span class="fw-bold">Venue: </span>{{ $event->venue }} <br>
-                                        <span class="fw-bold">Locale: </span>{{ $event->venue_locale }} <br>
-                                        <span class="fw-bold">Time Zone: </span>{{ $event->venue_time_zone }} <br>
-                                        <span class="fw-bold">Country: </span>{{ $event->venue_country }} <br>
-                                        <span class="fw-bold">City: </span>{{ $event->venue_city }} <br>
-                                        <span class="fw-bold">Postal Code: </span>{{ $event->venue_postal_code }}
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('events.buy', ['id' => $event->id]) }}"
-                                            class="btn btn-success rounded-pill px-5"
-                                            style="border-radius: 5px; text-decoration:none">Buy</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <div class="d-flex justify-content-end mt-3">
-                    {!! $events->links('vendor.pagination.bootstrap-4') !!}
-                </div>
+                                        <span class="fw-bold">End: </span> {{ $event->public_sales_end_time }}
+                                    @else
+                                        N.A
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($event->partner_presale_start_time && $event->partner_presale_end_time)
+                                        <span class="fw-bold">Start:
+                                        </span> {{ $event->partner_presale_start_time }}<br>
+                                        <span class="fw-bold">End: </span> {{ $event->partner_presale_end_time }}
+                                    @else
+                                        N.A
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($event->group_presale_start_time && $event->group_presale_end_time)
+                                        <span class="fw-bold">Start: </span> {{ $event->group_presale_start_time }}
+                                        <br>
+                                        <span class="fw-bold">End: </span> {{ $event->group_presale_end_time }}
+                                    @else
+                                        N.A
+                                    @endif
+                                </td>
+                                <td>{{ $event->start_date }}</td>
+                                <td>{{ $event->time_zone }}</td>
+                                <td class="text-danger fw-bold">
+                                    <h5 class="h5">{{ $event->status }}</h5>
+                                </td>
+                                <td>
+                                    <span class="fw-bold">ID: </span>{{ $event->segment_id }}
+                                    <br>
+                                    <span class="fw-bold">Name: </span>{{ $event->segment_name }}
+                                </td>
+                                <td>
+                                    <span class="fw-bold">ID: </span>{{ $event->genre_id }} <br>
+                                    <span class="fw-bold">Name: </span>{{ $event->genre_name }}
+                                </td>
+                                <td>
+                                    <span class="fw-bold">ID: </span>{{ $event->subgenre_id }} <br>
+                                    <span class="fw-bold">Name: </span>{{ $event->subgenre_name }}
+                                </td>
+                                <td>
+                                    {{ $event->currency }}
+                                </td>
+                                <td>
+                                    @if ($event->min_price && $event->max_price)
+                                        <span class="fw-bold">Min: </span>{{ $event->min_price }} <br>
+                                        <span class="fw-bold">Max: </span>{{ $event->max_price }}
+                                    @else
+                                        NA
+                                    @endif
+                                </td>
+                                <td style="width: 150px">
+                                    {{-- <span class="fw-bold">ID: </span>{{ $event->venue_id }} <br> --}}
+                                    <span class="fw-bold">Venue: </span>{{ $event->venue }} <br>
+                                    {{-- <span class="fw-bold">Locale: </span>{{ $event->venue_locale }} <br> --}}
+                                    {{-- <span class="fw-bold">Time Zone: </span>{{ $event->venue_time_zone }} <br> --}}
+                                    <span class="fw-bold">Country: </span>{{ $event->venue_country }} <br>
+                                    <span class="fw-bold">City: </span>{{ $event->venue_city }} <br>
+                                    <span class="fw-bold">Postal Code: </span>{{ $event->venue_postal_code }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('events.buy', ['id' => $event->id]) }}"
+                                        class="btn btn-primary rounded-pill fw-semibold px-5"
+                                        style="border-radius: 5px; text-decoration:none">Buy</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                {!! $events->links('vendor.pagination.bootstrap-4') !!}
             </div>
         </div>
     </div>

@@ -16,7 +16,7 @@
 
 <body>
     <x-header />
-    <div class="container">
+    <div class="container-fluid px-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex align-items-center justify-content-center vh-100">
@@ -138,9 +138,10 @@
                                         <div class="form-group">
                                             <label for="accountSelect" class="form-label fw-semibold">Choose
                                                 Account:</label>
-                                            <select class="form-control fw-semibold rounded-pill " id="accountSelect">
+                                            <select class="form-control fw-semibold rounded-pill" id="accountSelect">
                                                 @foreach ($accounts as $account)
-                                                    <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                                    <option value="{{ $account->id }}" class="fw-semibold">
+                                                        {{ $account->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -152,8 +153,8 @@
                                     <div class="d-flex align-items-center justify-content-center flex-wrap">
                                         <a href="javascript:history.back()"
                                             class="btn btn-secondary px-5 fw-semibold rounded-pill m-1">Back</a>
-                                        <a href="/checkout"
-                                            class="btn btn-primary px-5 fw-semibold rounded-pill">Confrim</a>
+                                        <button type="submit"
+                                            class="btn btn-primary px-5 fw-semibold rounded-pill">Confrim</button>
                                     </div>
                                 </div>
                             </div>
@@ -163,6 +164,8 @@
             </div>
         </div>
     </div>
+
+
 
 </body>
 
