@@ -233,6 +233,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <span class="p-0 m-0 fw-bold">Total Tickets: </span>
+                                                <p class="p-0 m-0 fw-semibold text-danger ">5000 $</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 {{-- </div> --}}
@@ -243,8 +251,8 @@
                                 <div class="d-flex align-items-center justify-content-center flex-wrap">
                                     <a href="javascript:history.back()"
                                         class="btn btn-secondary fw-semibold px-3 rounded-pill m-1">Back</a>
-                                    <button type="submit"
-                                        class="btn btn-primary fw-semibold px-3 rounded-pill">Pay</button>
+                                    <button type="submit" class="btn btn-primary fw-semibold px-3 rounded-pill"
+                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">Pay</button>
                                 </div>
                             </div>
                         </div>
@@ -252,6 +260,37 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="staticBackdropLabel">Success</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex align-items-center text-success ">
+                            <h4 class="h4 m-0 p-0">
+                                Purchase Successfull
+                            </h4>
+                            <span class="px-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38"
+                                    fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path
+                                        d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success rounded-pill px-3"
+                            data-bs-dismiss="modal">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 
