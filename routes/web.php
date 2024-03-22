@@ -22,7 +22,8 @@ use App\Http\Controllers\EventInfo;
 //     return view('welcome');
 // });
 
-Route::get('/', [EventInfo::class, 'getEvents']);
+Route::get('/', [EventInfo::class, 'company']);
+Route::get('/events', [EventInfo::class, 'getEvents']);
 Route::get('/saveEvents', [AddEvent::class, 'saveEvents']);
 Route::get('/newEvents', [EventInfo::class, 'getNewEvents']);
 
@@ -36,4 +37,5 @@ Route::get('/events/{id}', [EventInfo::class, 'buy'])->name('events.buy');
 Route::get('/newEvents/{id}', [EventInfo::class, 'newBuy'])->name('newEvents.buy');
 
 Route::get('/checkout', [EventInfo::class, 'checkout'])->name('checkout');
+
 

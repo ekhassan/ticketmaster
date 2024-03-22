@@ -21,7 +21,6 @@ html {
 ::-webkit-scrollbar-corner {
     background-color: transparent; /* Transparent background for the corner */
 }
-
 .fw-semibold {
     font-weight: 600 !important;
 }

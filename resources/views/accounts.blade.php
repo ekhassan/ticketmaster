@@ -90,7 +90,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
+
                                                 <div class="d-flex align-items-center justify-content-between w-100">
                                                     <div class="">
                                                         <div class="d-flex flex-column ">
@@ -112,7 +112,6 @@
                                                                 alt="chip">
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 </p>
                                             </div>
@@ -122,29 +121,6 @@
                                 </div>
                             @endforeach
                         </div>
-
-                        {{-- <div class="panel-body">
-                            <table class="table table-hover ">
-                                <thead>
-                                    <tr class="bg-dark text-white">
-                                        <th>Name</th>
-                                        <th>Card Number</th>
-                                        <th>CVC</th>
-                                        <th>Expiration</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($accounts as $account)
-                                        <tr>
-                                            <td>{{ $account->name }}</td>
-                                            <td>{{ $account->cardnumber }}</td>
-                                            <td>{{ $account->cvc }}</td>
-                                            <td>{{ $account->exp_month }}/{{ $account->exp_year }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div> --}}
                     </div>
                 </div>
             </div>

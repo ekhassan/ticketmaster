@@ -52,16 +52,21 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-semibold">
                   <li class="nav-item p-1">
-                      <a class="nav-link active" aria-current="page" href="/">Home</a>
+                      <a class="nav-link " aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item p-1">
+                      <a class="nav-link" aria-current="page" href="/events">Events</a>
                   </li>
                   <li class="nav-item p-1">
                       <a class="nav-link" href="/newEvents">New Events</a>
                   </li>
                   <li class="nav-item px-2 p-1">
-                      <a href="/accounts" class="nav-link btn btn-primary text-white px-3 rounded-pill fw-semibold">Account</a>
+                      <a href="/accounts"
+                          class="nav-link btn btn-primary text-white px-3 rounded-pill fw-semibold">Account</a>
                   </li>
                   <li class="nav-item p-1">
-                      <a href="/addAccount" class="nav-link btn btn-danger text-white px-3 fw-semibold rounded-pill fw-semibold">Add
+                      <a href="/addAccount"
+                          class="nav-link btn btn-danger text-white px-3 fw-semibold rounded-pill fw-semibold">Add
                           Account</a>
                   </li>
               </ul>
@@ -69,3 +74,20 @@
           </div>
       </div>
   </nav>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const currentLocation = window.location.href;
+
+      const navLinks = document.querySelectorAll(".navbar-nav .nav-link");  
+
+      navLinks.forEach(link => {
+        if (link.href === currentLocation) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    });
+  </script>

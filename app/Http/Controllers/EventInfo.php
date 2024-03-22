@@ -102,5 +102,9 @@ class EventInfo extends Controller
         // return dd($accounts);
         return view('checkout', compact('accounts', 'newEvents', 'newEventsCount'));
     }
+    public function company()
+    {
+        return view('company');
+    }
 }
 
